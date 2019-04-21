@@ -51,7 +51,7 @@ public class NoteController {
 	@PutMapping("/{id}")
 	public ResponseEntity<Note> updateNote(@PathVariable Long id, @Valid @RequestBody Note newNoteValue) throws Exception{
 	  Note existingNote = noteService.findNoteById(id).orElseThrow(() -> new NoteNotFoundException("Note Not Found for id "+id));
-	  return ResponseEntity.ok(noteService.updateNote(newNoteValue, existingNote, id));
+	  return ResponseEntity.ok(noteService.updateNote(newNoteValue, existingNote));
 	}
 	
 	@DeleteMapping("/{id}")

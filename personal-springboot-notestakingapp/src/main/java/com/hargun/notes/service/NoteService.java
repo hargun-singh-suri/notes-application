@@ -27,7 +27,7 @@ public class NoteService {
 		return noteRepository.findById(id);
 	}
 	
-	public Note updateNote(Note newNoteValue,Note existingNote,Long id) throws Exception {
+	public Note updateNote(Note newNoteValue,Note existingNote) throws Exception {
 				
 		existingNote.setContent(newNoteValue.getContent());
 		existingNote.setTitle(newNoteValue.getTitle());
