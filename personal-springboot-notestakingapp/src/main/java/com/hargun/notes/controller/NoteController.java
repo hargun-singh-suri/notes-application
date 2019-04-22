@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,16 +23,21 @@ import com.hargun.notes.exception.NoteNotFoundException;
 import com.hargun.notes.model.Note;
 import com.hargun.notes.service.NoteService;
 
+
 @RestController
 @Controller
 @RequestMapping("/api/notes")
 public class NoteController {
+	
+	private final Logger LOGGER =  LoggerFactory.getLogger(this.getClass());
+
 	
 	@Autowired
 	NoteService noteService;
 	
 	@GetMapping
 	public ResponseEntity<List<Note>> findAllNote(){
+		LOGGER.debug("Getter is called !!");
 		return ResponseEntity.ok(noteService.findAllNote());	
 	}
 	
